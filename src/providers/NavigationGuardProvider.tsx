@@ -1,4 +1,6 @@
-import { createContext, PropsWithChildren, RefObject } from "react";
+"use client";
+
+import React, { createContext, PropsWithChildren, RefObject } from "react";
 import { GuardedRefArray } from "../types";
 
 export const NavigationGuardContext = createContext<{

@@ -1,6 +1,6 @@
 "use client";
 
-import { PropsWithChildren, useRef } from "react";
+import React, { PropsWithChildren, useRef } from "react";
 import { GuardedRefArray } from "../types";
 import { NavigationGuardProvider } from "./NavigationGuardProvider";
 import AppRouterProviderWrapper from "./AppRouterProviderWrapper";
