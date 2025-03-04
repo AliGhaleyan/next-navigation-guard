@@ -1,4 +1,4 @@
-export {default as NavigationGuardProvider} from "./providers";
+export {default as NextNavigationGuardProvider} from "./providers";
 export {useNavigationGuard} from "./hooks/useNavigationGuard";
 export {navigationGuardHandleBeforeUnload} from "./utils";
 export {NavigationGuardContext} from "./providers/NavigationGuardProvider";

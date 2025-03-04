@@ -5,7 +5,7 @@ import {GuardRef} from "../types";
 import {NavigationGuardProvider} from "./NavigationGuardProvider";
 import AppRouterProviderWrapper from "./AppRouterProviderWrapper";
 
-const AppRouterProvider = (props: PropsWithChildren) => {
+const NextNavigationGuardProvider = (props: PropsWithChildren) => {
     const guardRef = useRef<GuardRef>({
         enabled: false,
         callback: undefined,
@@ -18,4 +18,4 @@ const AppRouterProvider = (props: PropsWithChildren) => {
     );
 };
 
-export default AppRouterProvider;
+export default NextNavigationGuardProvider;
