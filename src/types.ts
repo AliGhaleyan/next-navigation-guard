@@ -1,6 +1,4 @@
-export type GuardedRefArray = GuardDef;
-
-export type GuardDef = {
+export type GuardRef = {
   enabled: boolean;
   callback?: NavigationGuardCallback;
 };

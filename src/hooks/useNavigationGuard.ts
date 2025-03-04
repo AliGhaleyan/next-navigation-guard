@@ -6,7 +6,7 @@ import { NavigationGuardContext } from "../providers/NavigationGuardProvider";
 import { navigationGuardHandleBeforeUnload } from "../utils";
 
 export const useNavigationGuard = (enabled?: boolean) => {
-  const { guardedRef } = useContext(NavigationGuardContext);
+  const { guardRef } = useContext(NavigationGuardContext);
   const [pendingState, setPendingState] = useState<{
     resolve: (accepted: boolean) => void;
   } | null>(null);
@@ -29,22 +29,18 @@ export const useNavigationGuard = (enabled?: boolean) => {
     if (pendingState) return;
 
     const callback: NavigationGuardCallback = () => {
-      // if (options.confirm) {
-      //     return options.confirm(params);
-      // }
-
       return new Promise<boolean>((resolve) => {
         setPendingState({ resolve });
       });
     };
 
-    if (!guardedRef?.current) return;
+    if (!guardRef?.current) return;
 
-    guardedRef.current.enabled = !!enabled;
-    guardedRef.current.callback = callback;
+    guardRef.current.enabled = !!enabled;
+    guardRef.current.callback = callback;
 
     return () => {
-      guardedRef.current = {
+      guardRef.current = {
         enabled: false,
         callback: undefined,
       };
@@ -66,8 +62,8 @@ export const useNavigationGuard = (enabled?: boolean) => {
   }, [pendingState]);
 
   const disable = () => {
-    if (guardedRef?.current) {
-      guardedRef.current = {
+    if (guardRef?.current) {
+      guardRef.current = {
         enabled: false,
         callback: undefined,
       };

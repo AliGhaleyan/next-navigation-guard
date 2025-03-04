@@ -1,20 +1,20 @@
 "use client";
 
-import React, { PropsWithChildren, useRef } from "react";
-import { GuardedRefArray } from "../types";
-import { NavigationGuardProvider } from "./NavigationGuardProvider";
+import React, {PropsWithChildren, useRef} from "react";
+import {GuardRef} from "../types";
+import {NavigationGuardProvider} from "./NavigationGuardProvider";
 import AppRouterProviderWrapper from "./AppRouterProviderWrapper";
 
 const AppRouterProvider = (props: PropsWithChildren) => {
-    const guardedRef = useRef<GuardedRefArray>({
+    const guardRef = useRef<GuardRef>({
         enabled: false,
         callback: undefined,
     });
 
     return (
-        <NavigationGuardProvider guardedRef={guardedRef}>
+        <NavigationGuardProvider guardRef={guardRef}>
             <AppRouterProviderWrapper>{props.children}</AppRouterProviderWrapper>
-            </NavigationGuardProvider>
+        </NavigationGuardProvider>
     );
 };
 

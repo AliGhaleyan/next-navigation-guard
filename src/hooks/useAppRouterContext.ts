@@ -9,7 +9,7 @@ import { NavigationGuardContext } from "../providers/NavigationGuardProvider";
 
 export const useAppRouterContext = () => {
   const origRouter = useContext(AppRouterContext);
-  const { guardedRef } = useContext(NavigationGuardContext);
+  const { guardRef } = useContext(NavigationGuardContext);
 
   return useMemo((): AppRouterInstance | null => {
     if (!origRouter) return null;
@@ -19,10 +19,10 @@ export const useAppRouterContext = () => {
       to: string,
       accepted: () => void,
     ) => {
-      if (!guardedRef?.current) return accepted();
+      if (!guardRef?.current) return accepted();
 
-      if (guardedRef.current.enabled) {
-        const confirm = await guardedRef.current.callback?.({ to, type });
+      if (guardRef.current.enabled) {
+        const confirm = await guardRef.current.callback?.({ to, type });
         if (!confirm) return;
       }
 
@@ -41,5 +41,5 @@ export const useAppRouterContext = () => {
         guarded("refresh", location.href, () => origRouter.refresh(...args));
       },
     };
-  }, [origRouter, guardedRef?.current]);
+  }, [origRouter, guardRef?.current]);
 };

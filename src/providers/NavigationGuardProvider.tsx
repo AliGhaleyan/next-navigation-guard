@@ -1,19 +1,19 @@
 "use client";
 
-import React, { createContext, PropsWithChildren, RefObject } from "react";
-import { GuardedRefArray } from "../types";
+import React, {createContext, PropsWithChildren, RefObject} from "react";
+import {GuardRef} from "../types";
 
 export const NavigationGuardContext = createContext<{
-  guardedRef: RefObject<GuardedRefArray> | null;
+  guardRef: RefObject<GuardRef> | null;
 }>({
-  guardedRef: null,
+  guardRef: null,
 });
 
 export const NavigationGuardProvider = (
-  props: PropsWithChildren<{ guardedRef: RefObject<GuardedRefArray> | null }>,
+  props: PropsWithChildren<{ guardRef: RefObject<GuardRef> | null }>,
 ) => {
   return (
-    <NavigationGuardContext.Provider value={{ guardedRef: props.guardedRef }}>
+    <NavigationGuardContext.Provider value={{ guardRef: props.guardRef }}>
       {props.children}
     </NavigationGuardContext.Provider>
   );
